@@ -1,3 +1,5 @@
+package de.wirthedv.someproj.ftests;
+
 /*
  * Copyright 2011 the original author or authors.
  *
@@ -13,16 +15,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+
 import geb.spock.GebReportingSpec
 
 import spock.lang.*
+import org.junit.Test
 
+// run it from the command line with "mvn -Dgeb.env=phantom test"
 @Stepwise
 class GoogleWikipediaSpec extends GebReportingSpec {
     
     def "go to google"() {
         when:
-        go() // uses base url system property
+        go() // uses baseUrl system property
         
         then:
         title == "Google"
@@ -39,12 +45,12 @@ class GoogleWikipediaSpec extends GebReportingSpec {
         btnG().click()
         
         then:
-        waitFor { title.endsWith("Google Search") }
+        waitFor { title.endsWith("Google Search") && !$("li.g").isEmpty() }
     }
     
     def "the first result should be wikipedia"() {
         given:
-        def firstLink = $("li.g", 0).find("a.l")
+        def firstLink = $("li.g", 0).find("a", 0)
         
         expect:
         firstLink.text() == "Wikipedia"

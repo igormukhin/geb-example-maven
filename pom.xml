@@ -60,6 +60,12 @@
 			<scope>test</scope>
 		</dependency>
 		
+		<dependency>
+		    <groupId>com.github.detro.ghostdriver</groupId>
+		    <artifactId>phantomjsdriver</artifactId>
+		    <version>1.1.0</version>
+		</dependency>
+		
 <!-- 		
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -95,11 +101,15 @@
 				<version>2.17</version>
 				<configuration>
 					<includes>
-						<include>*Spec.*</include>
+						<include>**/ftests/**/*Spec.*</include>
 					</includes>
 					<systemPropertyVariables>
+						<!-- /ncr means Google should stay on google.com and do not redirect to i.e. google.de -->
 						<geb.build.baseUrl>http://google.com/ncr</geb.build.baseUrl>
-						<geb.build.reportsDir>target/test-reports/geb</geb.build.reportsDir>
+						
+						<!-- already set in GebConfig.groovy 
+						<geb.build.reportsDir>target/test-reports-geb</geb.build.reportsDir>
+						-->
 					</systemPropertyVariables>
 				</configuration>
 			</plugin>

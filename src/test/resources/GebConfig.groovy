@@ -4,8 +4,9 @@
 	See: http://www.gebish.org/manual/current/configuration.html
 */
 
-import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.chrome.ChromeDriver
+import org.openqa.selenium.firefox.FirefoxDriver
+import org.openqa.selenium.htmlunit.HtmlUnitDriver
 
 // See: http://code.google.com/p/selenium/wiki/HtmlUnitDriver
 driver = { new FirefoxDriver() }
@@ -16,6 +17,10 @@ environments {
 	// See: http://code.google.com/p/selenium/wiki/ChromeDriver
 	chrome {
 		driver = { new ChromeDriver() }
+	}
+
+	htmlunit {
+		driver = { new HtmlUnitDriver() }
 	}
 
 }
